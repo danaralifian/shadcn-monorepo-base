@@ -1,11 +1,10 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "@repo/typescript-config/base.json",
   "compilerOptions": {
-    "outDir": "dist",
     "rootDir": "src",
+    "outDir": "dist",
     "composite": true,
-    "declaration": true,
-    "declarationMap": true
+    "declaration": true
   },
   "include": ["src"]
 }

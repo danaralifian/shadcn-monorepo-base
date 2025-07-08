@@ -4,8 +4,8 @@
     "paths": {
       "@repo/utils": ["packages/utils/src"],
       "@repo/ui": ["packages/ui/src"],
-      "@repo/typescript-config": ["packages/configs/typescript"],
-      "@repo/tailwind-config": ["packages/configs/tailwind"]
+      "@repo/typescript-config": ["packages/typescript-config"],
+      "@repo/tailwind-config": ["packages/tailwind-config"]
     }
   }
 }
