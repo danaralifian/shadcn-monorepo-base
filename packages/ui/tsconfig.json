@@ -2,12 +2,8 @@
   "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
-    "baseUrl": ".",
-    "paths": {
-      "@repo/utils": ["../../utils/src/index.ts"]
-    }
+    "baseUrl": "."
   },
-  "references": [{ "path": "../utils" }],
   "include": ["src"],
   "exclude": ["dist", "build", "node_modules"]
 }
