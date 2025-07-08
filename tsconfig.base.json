@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@repo/utils": ["packages/utils/src"],
+      "@repo/ui": ["packages/ui/src"],
+      "@repo/typescript-config": ["packages/configs/typescript"],
+      "@repo/tailwind-config": ["packages/configs/tailwind"]
+    }
+  }
+}
