@@ -15,7 +15,7 @@ A modern **Turborepo-based monorepo starter** template with full support for:
 
 ```
 apps/
-└── web                 # A Next.js 14 app with Tailwind + ShadCN
+└── web                 # A Next.js 15 app with Tailwind + ShadCN
 
 packages/
 ├── ui                 # Reusable ShadCN components with Tailwind styling
