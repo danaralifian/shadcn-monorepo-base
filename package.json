@@ -8,7 +8,7 @@
     "check-types": "turbo run check-types",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky",
-    "gen:package": "node scripts/gen-package.js"
+    "gen": "node scripts/gen.js"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.15",
