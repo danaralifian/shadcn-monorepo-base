@@ -15,7 +15,7 @@ const src = path.resolve(`${template}/${type}`);
 const dest = path.resolve(`${rootDir}/${name}`);
 
 if (!fs.existsSync(src)) {
-  console.error(`❌ Template ${template} not found in ${rootDir}/`);
+  console.error(`❌ Template not found: ${src}`);
   process.exit(1);
 }
 
@@ -25,28 +25,34 @@ if (fs.existsSync(dest)) {
 }
 
 fs.copySync(src, dest);
-console.log(`📁 Copied ${rootDir}/${template} → ${rootDir}/${name}`);
+console.log(`📁 Copied ${src} → ${dest}`);
 
 const pkgPath = path.join(dest, "package.json");
 if (fs.existsSync(pkgPath)) {
   const pkg = fs.readJsonSync(pkgPath);
-  pkg.name = `@repo/${name}`;
+
+  // Hanya prefix @repo untuk packages
+  pkg.name = type === "app" ? name : `@repo/${name}`;
+
   fs.writeJsonSync(pkgPath, pkg, { spaces: 2 });
-  console.log(`📦 Updated name to @repo/${name} in package.json`);
+  console.log(`📦 Updated name to ${pkg.name} in package.json`);
 }
 
-// Update tsconfig.base.json
-const tsconfigPath = path.resolve("tsconfig.base.json");
-if (fs.existsSync(tsconfigPath)) {
-  const tsconfig = fs.readJsonSync(tsconfigPath);
+// Hanya update tsconfig.base.json kalau type === "package"
+if (type === "package") {
+  const tsconfigPath = path.resolve("tsconfig.base.json");
 
-  tsconfig.compilerOptions.paths = {
-    ...(tsconfig.compilerOptions.paths || {}),
-    [`@repo/${name}`]: [`${rootDir}/${name}/src`],
-  };
+  if (fs.existsSync(tsconfigPath)) {
+    const tsconfig = fs.readJsonSync(tsconfigPath);
 
-  fs.writeJsonSync(tsconfigPath, tsconfig, { spaces: 2 });
-  console.log(`🛠️  Updated tsconfig.base.json path alias for @repo/${name}`);
+    tsconfig.compilerOptions.paths = {
+      ...(tsconfig.compilerOptions.paths || {}),
+      [`@repo/${name}`]: [`${rootDir}/${name}/src`],
+    };
+
+    fs.writeJsonSync(tsconfigPath, tsconfig, { spaces: 2 });
+    console.log(`🛠️  Updated tsconfig.base.json path alias for @repo/${name}`);
+  }
 }
 
 console.log(`✅ Done generating ${type}: ${name}`);
