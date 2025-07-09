@@ -39,29 +39,26 @@ npm install
 npm run build
 ```
 
-### 2. Build Packages
+### 3. Run Development
 
 ```bash
 npm run dev
 ```
 
-## ⚙️ Generate Package
+## ⚙️ Generate Workspace (App /Package)
 
-### 1. Generate new package
+### 1. Generate new app
 
 ```bash
-npm run gen:package <package-name>
+npm run gen app <app-name>
+npm run dev
 ```
 
-### 2. Build Packages
+### 2. Generate new package
 
 ```bash
+npm run gen package <package-name>
 npm run build
-```
-
-### 2. Build Packages
-
-```bash
 npm run dev
 ```
 
