@@ -11,7 +11,7 @@ if (!type || !name) {
 const rootDir = type === "app" ? "apps" : "packages";
 const template = "template";
 
-const src = path.resolve(`${rootDir}/${template}`);
+const src = path.resolve(`${template}/${type}`);
 const dest = path.resolve(`${rootDir}/${name}`);
 
 if (!fs.existsSync(src)) {
