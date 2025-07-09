@@ -7,10 +7,12 @@
     "lint": "turbo run lint",
     "check-types": "turbo run check-types",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "gen:package": "node scripts/gen-package.js"
   },
   "devDependencies": {
     "@types/prop-types": "^15.7.15",
+    "fs-extra": "^11.3.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "prettier": "^3.6.0",

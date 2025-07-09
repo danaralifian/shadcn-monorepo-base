@@ -45,6 +45,26 @@ npm run build
 npm run dev
 ```
 
+## ⚙️ Generate Package
+
+### 1. Generate new package
+
+```bash
+npm run gen:package <package-name>
+```
+
+### 2. Build Packages
+
+```bash
+npm run build
+```
+
+### 2. Build Packages
+
+```bash
+npm run dev
+```
+
 ## What's inside?
 
 This Turborepo includes the following packages/apps:
