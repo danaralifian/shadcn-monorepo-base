@@ -8,18 +8,19 @@
       "outputs": ["dist/**"]
     },
     "build:components": {
-      "outputs": ["dist/**"]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "cache": false
     },
     "dev": {
-      "with": ["dev:styles", "dev:components"]
+      "with": ["dev:styles", "dev:components"],
+      "cache": false
     },
     "dev:styles": {
-      "cache": false,
-      "persistent": true
+      "cache": false
     },
     "dev:components": {
-      "cache": false,
-      "persistent": true
+      "cache": false
     }
   }
 }
