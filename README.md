@@ -62,13 +62,24 @@ npm run build
 npm run dev
 ```
 
+## ⚠️ Tailwind v4 Zero-Config: Import Order Guide for Monorepo
+
+When using Tailwind CSS v4 with Zero-Config in a monorepo (e.g., Turborepo), it's crucial to ensure the correct CSS import order across your shared packages and apps. Incorrect setup can cause utility classes, breakpoints, and variables to silently fail. [Tailwind Labs Issue #15884](https://github.com/tailwindlabs/tailwindcss/issues/15884#issuecomment-2741265329)
+
+### ✅ Correct Import Order (inside app-level `global.css`)
+
+```css
+@import "@repo/tailwind-config"; /* Contains :root tokens, animations, etc. — no Tailwind import inside */
+@import "@repo/ui/styles.css"; /* Shared component styles — also no Tailwind import inside */
+@import "tailwindcss"; /* Must be imported last */
+```
+
 ## What's inside?
 
 This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
 - `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
 - `@repo/ui`: a stub React component library with [shadcn/ui](https://ui.shadcn.com/) and [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
 - `@repo/utils`: Shared utility functions (e.g., cn, formatDate, etc.) used across apps and packages
