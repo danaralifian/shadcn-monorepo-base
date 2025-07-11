@@ -1,27 +1,20 @@
-@import "tailwindcss";
+/* 
+⚠️ Important: Tailwind v4 Zero-Config Import Order in a Monorepo Setup
+
+Avoid importing `@import "tailwindcss"` in both the shared config and the app-level CSS.
+This will lead to override issues and broken utility detection.
+
+✅ Correct Import Order (in app-level global.css):
+1. @repo/tailwind-config → contains :root, custom animations, etc. (no Tailwind import inside)
+2. @repo/ui/styles.css → shared UI component styles (also without Tailwind import)
+3. tailwindcss → must come last to ensure all tokens, base layers, and variables are registered
+
+⚠️ If `@import "tailwindcss"` comes first (e.g., inside the shared config), then:
+- Custom CSS variables, base styles, and layers may not be recognized
+- Breakpoints, colors, and utilities may silently fail
+
+🔁 Rule of thumb: Only import "tailwindcss" **once** at the app level — not inside shared config.
+*/
 @import "@repo/tailwind-config";
 @import "@repo/ui/styles.css";
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@import "tailwindcss";
